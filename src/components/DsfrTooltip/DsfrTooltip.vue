@@ -1,21 +1,32 @@
 <script setup lang="ts">
-  import '@gouvfr/dsfr/dist/component/tooltip/tooltip.module.js'
-  import { getRandomId } from '../../utils/random-utils'
+import { getRandomId } from '../../utils/random-utils'
+import { ref } from 'vue'
 
-  withDefaults(defineProps<{
+withDefaults(defineProps<{
     content: string
     onHover?: boolean
     onClick?: boolean
     id?: string,
   }>(), {
-    content: '',
-    id: () => getRandomId('tooltip'),
-  })
+  content: '',
+  id: () => getRandomId('tooltip'),
+})
+
+const showToolTip = ref(false)
+
+function toggleToolTip () {
+  showToolTip.value = !showToolTip.value
+}
 </script>
 
 <template>
-  <div v-if="onHover">
+  <div
+    v-if="onHover"
+    @mouseover="toggleToolTip()"
+    @mouseout="toggleToolTip()"
+  >
     <a
+      :id="'link-' + id"
       class="fr-link"
       :aria-describedby="id"
       href="#"
@@ -23,27 +34,44 @@
       <slot />
     </a>
     <span
-      class="fr-tooltip fr-placement"
       :id="id"
+      class="fr-tooltip  fr-placement  fr-placement--top  fr-placement--center  fr-tooltype-style"
+      :class="{
+        'fr-tooltip--shown': showToolTip
+      }"
       role="tooltip"
       aria-hidden="true"
     >
-    {{ content }}
+      {{ content }}
     </span>
   </div>
 
-  <div v-if="onClick">
+  <div
+    v-if="onClick"
+    @click="toggleToolTip()"
+  >
     <button
+      :id="'button-' + id"
       class="fr-btn--tooltip fr-btn"
       :aria-describedby="id"
     />
     <span
-      class="fr-tooltip fr-placement"
       :id="id"
+      class="fr-tooltip  fr-placement  fr-placement--top  fr-placement--center  fr-tooltype-style"
+      :class="{
+        'fr-tooltip--shown': showToolTip
+      }"
       role="tooltip"
       aria-hidden="true"
     >
-    {{ content }}
+      {{ content }}
     </span>
   </div>
 </template>
+<style>
+/*
+ne fonctionne pas
+.fr-tooltype-style {
+  transform: translate(600px, 151px); --arrow-x: -8.00px;
+} */
+</style>
