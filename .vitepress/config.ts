@@ -26,6 +26,23 @@ export default defineConfig({
     logo: '/nouveau-logo-marianne-gouvernement.png',
     nav: [
       { text: 'Home', link: '/' },
+      {
+        text: 'Références',
+        items: [
+          { text: 'Composants', link: '/composants' },
+          { text: 'Nuxt 3', link: '/nuxt/' }
+        ]
+      },
+      {
+        text: 'Liens',
+        items: [
+          {
+            text: 'Système de Design Français',
+            link: 'https://www.systeme-de-design.gouv.fr/',
+            target: '_blank'
+          }
+        ]
+      }
     ],
     outline:{
       level: [2, 3],
@@ -107,7 +124,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/dnum-mi/vue-dsfr' }
+      { icon: 'github', link: 'https://github.com/dnum-mi/vue-dsfr' },
+      { icon: 'discord', link: 'https://discord.gg/jbBJ9769ZZ' }
     ]
   },
 
