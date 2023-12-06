@@ -25,12 +25,13 @@ export default defineConfig({
     },
     logo: '/nouveau-logo-marianne-gouvernement.png',
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Guide', link: '/guide/' },
       {
         text: 'Références',
         items: [
           { text: 'Composants', link: '/composants' },
-          { text: 'Nuxt 3', link: '/nuxt/' }
+          { text: 'Nuxt 3', link: '/nuxt/' },
+          { text: 'Types', link: '/types' }
         ]
       },
       {
@@ -70,59 +71,59 @@ export default defineConfig({
         },
       }
     },
-    sidebar: [
-      {
-        text: 'Pour commencer',
-        collapsed: false,
-        items: [
-          {
-            text: 'Commencer',
-            link: '/pour-commencer',
-          },
-          {
-            text: 'L’écosystème',
-            link: '/ecosysteme',
-          },
-          {
-            text: 'Les icônes',
-            link: '/icones',
-          },
-          {
-            text: 'Guide du développeur',
-            link: '/guide-developpeur',
-          },
-        ]
-      },
-      {
-        text: 'Tous les types',
-        link: '/types',
-        items: []
-      },
-      {
-        text: 'Tous les composants',
-        link: '/composants',
-        collapsed: false,
-        items: [
-          {
-            text: 'DsfrAlert',
-            link: '/composants/DsfrAlert.md',
-          },
-          {
-            text: 'DsfrBadge',
-            link: '/composants/DsfrBadge.md',
-          },
-          {
-            text: 'DsfrNotice',
-            link: '/composants/DsfrNotice.md',
-          },
-        ]
-      },
-      {
-        text: 'Recettes nuxt',
-        link: '/nuxt/',
-      },
-    ],
-
+    sidebar: {
+      '/guide/': [
+        {
+          text: 'Introduction',
+          items: [
+            {
+              text: 'VueDSFR',
+              link: '/guide/',
+            },
+            {
+              text: 'L’écosystème',
+              link: '/ecosysteme',
+            },
+            {
+              text: 'Les icônes',
+              link: '/icones',
+            },
+            {
+              text: 'Guide du développeur',
+              link: '/guide-developpeur',
+            },
+          ]
+        },
+        {
+          text: 'Tous les types',
+          link: '/types',
+          items: []
+        },
+        {
+          text: 'Tous les composants',
+          link: '/composants',
+          collapsed: false,
+          items: [
+            {
+              text: 'DsfrAlert',
+              link: '/composants/DsfrAlert.md',
+            },
+            {
+              text: 'DsfrBadge',
+              link: '/composants/DsfrBadge.md',
+            },
+            {
+              text: 'DsfrNotice',
+              link: '/composants/DsfrNotice.md',
+            },
+          ]
+        },
+        {
+          text: 'Recettes nuxt',
+          link: '/nuxt/',
+        },
+      ],
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/dnum-mi/vue-dsfr' },
       { icon: 'discord', link: 'https://discord.gg/jbBJ9769ZZ' }
